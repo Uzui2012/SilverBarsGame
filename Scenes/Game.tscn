@@ -1,0 +1,82 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Scripts/ItemGetter.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/Game.gd" type="Script" id=2]
+[ext_resource path="res://Scenes/Item.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets/desk_1.png" type="Texture" id=4]
+[ext_resource path="res://Assets/graver_01.png" type="Texture" id=5]
+[ext_resource path="res://Scripts/Border.gd" type="Script" id=6]
+
+[sub_resource type="CircleShape2D" id=1]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 768, 64 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 768, 64 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 64, 488 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 64, 488 )
+
+[node name="Game" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Desk1" type="Sprite" parent="."]
+position = Vector2( 6.10352e-05, 6.10352e-05 )
+texture = ExtResource( 4 )
+centered = false
+
+[node name="Graver01" type="Sprite" parent="."]
+position = Vector2( 1216, 200 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 5 )
+
+[node name="ItemGetter" type="Area2D" parent="."]
+script = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ItemGetter"]
+shape = SubResource( 1 )
+
+[node name="Paper1" parent="." instance=ExtResource( 3 )]
+position = Vector2( 448, 296 )
+
+[node name="Paper2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 688, 208 )
+
+[node name="BorderNorth" type="StaticBody2D" parent="."]
+collision_layer = 7
+script = ExtResource( 6 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BorderNorth"]
+position = Vector2( 640, -64 )
+shape = SubResource( 2 )
+
+[node name="BorderSouth" type="StaticBody2D" parent="."]
+position = Vector2( 0, 848 )
+collision_layer = 7
+script = ExtResource( 6 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BorderSouth"]
+position = Vector2( 640, -64 )
+shape = SubResource( 3 )
+
+[node name="BorderWest" type="StaticBody2D" parent="."]
+position = Vector2( -128, 720 )
+collision_layer = 7
+script = ExtResource( 6 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BorderWest"]
+position = Vector2( 64, -360 )
+shape = SubResource( 4 )
+
+[node name="BorderEast" type="StaticBody2D" parent="."]
+position = Vector2( 1280, 720 )
+collision_layer = 7
+script = ExtResource( 6 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BorderEast"]
+position = Vector2( 64, -360 )
+shape = SubResource( 5 )
