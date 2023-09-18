@@ -2,7 +2,7 @@ extends Node2D
 
 var item_stack = []
 
-var item_scene = preload("res://Scenes/Item.tscn")
+var item_scene = preload("res://Scenes/Bar.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
