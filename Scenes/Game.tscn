@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scripts/ItemGetter.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/Game.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Assets/desk_1.png" type="Texture" id=4]
 [ext_resource path="res://Scenes/Engraver.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scripts/Border.gd" type="Script" id=6]
+[ext_resource path="res://Scenes/Camera2D.gd" type="Script" id=7]
 
 [sub_resource type="CircleShape2D" id=1]
 
@@ -26,6 +27,7 @@ script = ExtResource( 2 )
 
 [node name="Desk1" type="Sprite" parent="."]
 position = Vector2( 6.10352e-05, 6.10352e-05 )
+z_index = -5
 texture = ExtResource( 4 )
 centered = false
 
@@ -72,11 +74,23 @@ shape = SubResource( 5 )
 
 [node name="Bar1" parent="." instance=ExtResource( 3 )]
 position = Vector2( 448, 296 )
+z_as_relative = false
 
 [node name="Bar2" parent="." instance=ExtResource( 3 )]
 position = Vector2( 688, 208 )
+z_as_relative = false
+
+[node name="Bar3" parent="." instance=ExtResource( 3 )]
+position = Vector2( 832, 384 )
+z_as_relative = false
 
 [node name="Engraver" parent="." instance=ExtResource( 5 )]
-position = Vector2( 960, 272 )
+position = Vector2( 968, 248 )
+z_as_relative = false
 collision_layer = 2
 input_pickable = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 640, 360 )
+current = true
+script = ExtResource( 7 )
